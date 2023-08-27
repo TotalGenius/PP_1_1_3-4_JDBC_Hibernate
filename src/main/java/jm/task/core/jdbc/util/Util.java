@@ -1,6 +1,7 @@
 package jm.task.core.jdbc.util;
 
 import com.mysql.cj.jdbc.Driver;
+import jm.task.core.jdbc.exceptions.DBConnectionException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +24,7 @@ public final class Util {
                     PropertiesUtil.getByKey(USER_NAME_KEY),
                     PropertiesUtil.getByKey(USER_PASS_KEY));
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DBConnectionException(e);
         }
     }
 }
